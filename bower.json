@@ -1,0 +1,21 @@
+{
+  "name": "email-obfuscator",
+  "version": "0.1",
+  "homepage": "https://github.com/pzi/email-obfuscator",
+  "authors": [
+    "Patrik Affentranger <patrik.affentranger@gmail.com>"
+  ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/pzi/email-obfuscator.git"
+  },
+  "description": "Protect email addresses on your website from harvesting spam bots.",
+  "main": "src/email_obfuscator.js",
+  "keywords": [
+    "email",
+    "obfuscating",
+    "masking",
+    "spam"
+  ],
+  "license": "MIT"
+}
