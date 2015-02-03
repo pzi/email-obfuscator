@@ -31,5 +31,14 @@ $ bower install --save email-obfuscator
     <!-- <a href="mailto:mail@example.com">mail@example.com</a> -->
     ```
 
+
+## TODO
+* Add grunt.js (banner and minifacation)
+* Convert to proper jQuery plugin
+* Add tests
+* Add to bower.io
+* Add example gh-page
+
+
 ## License
 MIT © [Patrik Affentranger](http://patrikaffentranger.me)
