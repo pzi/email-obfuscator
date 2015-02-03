@@ -33,7 +33,6 @@ $ bower install --save email-obfuscator
 
 
 ## TODO
-* Add grunt.js (banner and minifacation)
 * Convert to proper jQuery plugin
 * Add tests
 * Add to bower.io
