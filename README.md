@@ -12,7 +12,7 @@ $ bower install --save email-obfuscator
 ## Usage
 1. Include jQuery
 2. Include the email-obfuscator script (preferably in the footer of your website):
-    ```js
+    ```html
     <script src="dist/email_obfuscator.min.js"></script>
     ```
 
