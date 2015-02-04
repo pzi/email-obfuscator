@@ -1,3 +1,4 @@
+/* jslint node: true */
 'use strict';
 
 module.exports = function(grunt) {
@@ -32,6 +33,19 @@ module.exports = function(grunt) {
       }
     },
 
+    jasmine: {
+      components: {
+        src: ['dist/<%= meta.mainFile %>.js'],
+        options: {
+          specs: 'test/*Spec.js',
+          keepRunner : false,
+          vendor: [
+            'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
+          ]
+        }
+      }
+    },
+
     watch: {
       files: ['src/*'],
       tasks: ['default']
@@ -41,8 +55,9 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['concat','uglify']);
+  grunt.registerTask('default', ['concat','uglify','jasmine']);
 
 };
