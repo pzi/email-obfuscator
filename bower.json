@@ -12,12 +12,18 @@
   },
   "description": "Protect email addresses on your website from harvesting spam bots.",
   "main": "src/email_obfuscator.js",
+  "dependencies": {
+    "jquery": ">1.9.0"
+  },
   "ignore": [
     "**/.*",
-    "src/",
-    "test/",
+    "src",
+    "test",
+    "bower.json",
+    "Gruntfile.js",
+    "LICENSE",
     "package.json",
-    "Gruntfile.js"
+    "README.md"
   ],
   "keywords": [
     "email",
