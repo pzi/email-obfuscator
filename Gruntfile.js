@@ -34,15 +34,12 @@ module.exports = function(grunt) {
     },
 
     jasmine: {
-      components: {
-        src: ['dist/<%= meta.mainFile %>.js'],
-        options: {
-          specs: 'test/*Spec.js',
-          keepRunner : false,
-          vendor: [
-            'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
-          ]
-        }
+      src: ['dist/<%= meta.mainFile %>.js'],
+      options: {
+        specs: 'test/spec/*Spec.js',
+        outfile: 'test/_SpecRunner.html',
+        keepRunner : true,
+        vendor: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
       }
     },
 
