@@ -34,7 +34,6 @@ $ bower install --save email-obfuscator
 
 ## TODO
 * Convert to proper jQuery plugin
-* Add tests
 * Add to bower.io
 * Add example gh-page
 
