@@ -15,6 +15,7 @@
   "ignore": [
     "**/.*",
     "src/",
+    "test/",
     "package.json",
     "Gruntfile.js"
   ],
