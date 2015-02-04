@@ -3,7 +3,7 @@
 
   $.fn.obfuscateEmails = function() {
 
-    $('[data-email-prefix]').replaceWith(function() {
+    this.find('[data-email-prefix]').replaceWith(function() {
       var $email = $(this),
           prefix = $email.data('email-prefix'),
           suffix = $email.data('email-suffix'),
