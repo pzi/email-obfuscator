@@ -46,6 +46,10 @@ module.exports = function(grunt) {
       }
     },
 
+    jshint: {
+      all: ['Gruntfile.js', 'src/<%= meta.mainFile %>.js', 'test/**/*.js']
+    },
+
     watch: {
       files: ['src/*'],
       tasks: ['default']
@@ -54,11 +58,12 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['concat','uglify','jasmine']);
-  grunt.registerTask('travis', ['jasmine']);
+  grunt.registerTask('default', ['concat','uglify','jshint','jasmine']);
+  grunt.registerTask('travis', ['jshint','jasmine']);
 
 };
