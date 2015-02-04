@@ -10,30 +10,28 @@ describe("obfuscateEmails", function() {
   describe("when expose is undefined", function() {
 
     var $container;
-    function setup(){
+
+    // Arrange
+    beforeEach(function (){
       $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com'");
       return $container;
-    }
+    });
 
-    function act () {
-       return $container.obfuscateEmails();
-    }
+    // Act
+    beforeEach(function () {
+      return $container.obfuscateEmails();
+    });
 
+    // Assert
     it("changes span to be a link", function() {
-      setup();
-      act();
       expect($container.find('a').length).toBe(1);
     });
 
     it("does not change the link text", function() {
-      setup();
-      act();
       expect($container.find('a').text()).toBe("Example email");
     });
 
     it("sets the mailto to be the email address", function() {
-      setup();
-      act();
       expect($container.find('a').attr('href')).toBe("mailto:mail@example.com");
     });
   });
