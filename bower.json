@@ -2,7 +2,10 @@
   "name": "email-obfuscator",
   "version": "0.1.0",
   "homepage": "https://github.com/pzi/email-obfuscator",
-  "author": "Patrik Affentranger",
+  "author": {
+    "name": "Patrik Affentranger",
+    "url": "http://patrikaffentranger.me"
+  },
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/pzi/email-obfuscator.git"
@@ -17,8 +20,9 @@
   ],
   "keywords": [
     "email",
-    "obfuscating",
-    "masking",
+    "obfuscator",
+    "obfuscate",
+    "mask",
     "spam"
   ],
   "license": "MIT"
