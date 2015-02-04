@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     meta: {
       mainFile: 'email_obfuscator',
       banner: '/*! <%= pkg.name %> - v<%= pkg.version %> | <%= pkg.license %> License | ' +
-        ' <%= pkg.homepage %> */\n'
+        '<%= pkg.homepage %> */\n'
     },
 
     concat: {
