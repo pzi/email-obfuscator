@@ -1,4 +1,4 @@
-/*! email-obfuscator - v0.1.0 | MIT License |  https://github.com/pzi/email-obfuscator */
+/*! email-obfuscator - v0.1.0 | MIT License | https://github.com/pzi/email-obfuscator */
 ;(function($) {
   "use strict";
 
