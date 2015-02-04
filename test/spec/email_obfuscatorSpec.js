@@ -24,7 +24,7 @@ describe("obfuscateEmails", function() {
 
     // Assert
     it("changes span to be a link", function() {
-      expect($container.find('a').length).toBe(1);
+      expect($container.find('a').length).toBeTruthy();
     });
 
     it("does not change the link text", function() {
