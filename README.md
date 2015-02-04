@@ -33,10 +33,10 @@ $ bower install --save email-obfuscator
 
 
 ## TODO
-* Convert to proper jQuery plugin
-* Add to bower.io
 * Add example gh-page
-
+* Add more tests
+* Improve element selector
+* Include other html attributes in the conversion
 
 ## License
 MIT © [Patrik Affentranger](http://patrikaffentranger.me)
