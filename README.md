@@ -1,4 +1,4 @@
-# email-obfuscator [![Build Status](https://travis-ci.org/pzi/email-obfuscator.svg?branch=master)](https://travis-ci.org/pzi/email-obfuscator)
+# email-obfuscator [![Build Status](https://travis-ci.org/pzi/email-obfuscator.svg?branch=master)](https://travis-ci.org/pzi/email-obfuscator) ![dependencies](https://david-dm.org/pzi/email-obfuscator/dev-status.svg)
 
 > Protect email addresses on your website from harvesting spam bots.
 
