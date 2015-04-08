@@ -1,4 +1,8 @@
+"use strict";
+
 describe("obfuscateEmails", function() {
+
+  var $container;
 
   function createContainer (data) {
     var $el = $("<span " + data + ">Example email</span>");
@@ -8,8 +12,6 @@ describe("obfuscateEmails", function() {
   }
 
   describe("when expose is undefined", function() {
-
-    var $container;
 
     // Arrange
     beforeEach(function (){
@@ -34,17 +36,89 @@ describe("obfuscateEmails", function() {
     it("sets the mailto to be the email address", function() {
       expect($container.find('a').attr('href')).toBe("mailto:mail@example.com");
     });
+
   });
 
   describe("when expose is defined", function() {
-    it("exposes the email address", function() {
-        var $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose");
 
-      $container.obfuscateEmails();
+    beforeEach(function (){
+      $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose");
+      return $container.obfuscateEmails();
+    });
+
+    it("exposes the email address", function() {
       expect($container.find('a').text()).toBe("mail@example.com");
     });
+
+
+    describe("and it is set to true", function() {
+
+      beforeEach(function (){
+        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='true'");
+        return $container.obfuscateEmails();
+      });
+
+      it("exposes the email address", function() {
+        expect($container.find('a').text()).toBe("mail@example.com");
+      });
+
+    });
+
+    describe("and it is set to 1", function() {
+
+      beforeEach(function (){
+        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='1'");
+        return $container.obfuscateEmails();
+      });
+
+      it("exposes the email address", function() {
+        expect($container.find('a').text()).toBe("mail@example.com");
+      });
+
+    });
+
+    describe("and it is set to false", function() {
+
+      beforeEach(function (){
+        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='false'");
+        return $container.obfuscateEmails();
+      });
+
+      it("does not expose the email address", function() {
+        expect($container.find('a').text()).not.toBe("mail@example.com");
+      });
+
+    });
+
+    describe("and it is set to 0", function() {
+
+      beforeEach(function (){
+        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='0'");
+        return $container.obfuscateEmails();
+      });
+
+      it("does not expose the email address", function() {
+        expect($container.find('a').text()).not.toBe("mail@example.com");
+      });
+
+    });
+
+    describe("and it is set to 'foo'", function() {
+
+      beforeEach(function (){
+        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='foo'");
+        return $container.obfuscateEmails();
+      });
+
+      it("does not expose the email address", function() {
+        expect($container.find('a').text()).not.toBe("mail@example.com");
+      });
+
+    });
+
   });
+
   // TODO:
-  //    test for expose false
   //    test for targeting a different container
+  //    test for copying set span attributes
 });
