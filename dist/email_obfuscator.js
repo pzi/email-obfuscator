@@ -1,16 +1,25 @@
-/*! email-obfuscator - v0.1.0 | MIT License | https://github.com/pzi/email-obfuscator */
+/*! email-obfuscator - v0.1.3 | MIT License | https://github.com/pzi/email-obfuscator */
 ;(function($) {
   "use strict";
 
-  $.fn.obfuscateEmails = function() {
+  $.fn.obfuscateEmails = function () {
 
-    this.find('[data-email-prefix]').replaceWith(function() {
-      var $email = $(this),
-          prefix = $email.data('email-prefix'),
-          suffix = $email.data('email-suffix'),
-          expose = $email.data('email-expose'),
-          email = "" + prefix + "@" + suffix,
-          text = (typeof expose === "undefined") ? $email.text() : email;
+    var shouldExpose = function (expose_value) {
+      if (typeof expose_value !== "undefined" && expose_value.length < 1) {
+        return true;
+      } else if (expose_value === true || expose_value === 1) {
+        return true;
+      }
+      return false;
+    };
+
+    this.find('[data-email-prefix]').replaceWith(function () {
+      var $email = $(this);
+      var prefix = $email.data('email-prefix');
+      var suffix = $email.data('email-suffix');
+      var expose_value = $email.data('email-expose');
+      var email = "" + prefix + "@" + suffix;
+      var text = shouldExpose(expose_value) ? email : $email.text();
 
       return $("<a href='mailto:" + email + "'>" + text + "</a>");
     });
