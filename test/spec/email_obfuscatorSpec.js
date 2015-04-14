@@ -11,6 +11,46 @@ describe("obfuscateEmails", function() {
     return $container.append($el);
   }
 
+  function sharedBehaviourWhenEmailShouldBeExposed (data) {
+    var $container;
+
+    // Arrange
+    beforeEach(function () {
+      $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com'" + data);
+      return $container;
+    });
+
+    // Act
+    beforeEach(function () {
+      return $container.obfuscateEmails();
+    });
+
+    // Assert
+    it("exposes the email address", function() {
+      expect($container.find('a').text()).toBe("mail@example.com");
+    });
+  }
+
+  function sharedBehaviourWhenEmailShouldNotBeExposed (data) {
+    var $container;
+
+    // Arrange
+    beforeEach(function () {
+      $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com'" + data);
+      return $container;
+    });
+
+    // Act
+    beforeEach(function () {
+      return $container.obfuscateEmails();
+    });
+
+    // Assert
+    it("does not expose the email address", function() {
+      expect($container.find('a').text()).not.toBe("mail@example.com");
+    });
+  }
+
   describe("when expose is undefined", function() {
 
     // Arrange
@@ -41,79 +81,26 @@ describe("obfuscateEmails", function() {
 
   describe("when expose is defined", function() {
 
-    beforeEach(function (){
-      $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose");
-      return $container.obfuscateEmails();
-    });
-
-    it("exposes the email address", function() {
-      expect($container.find('a').text()).toBe("mail@example.com");
-    });
-
+    sharedBehaviourWhenEmailShouldBeExposed("data-email-expose");
 
     describe("and it is set to true", function() {
-
-      beforeEach(function (){
-        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='true'");
-        return $container.obfuscateEmails();
-      });
-
-      it("exposes the email address", function() {
-        expect($container.find('a').text()).toBe("mail@example.com");
-      });
-
+      sharedBehaviourWhenEmailShouldBeExposed("data-email-expose='true'");
     });
 
     describe("and it is set to 1", function() {
-
-      beforeEach(function (){
-        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='1'");
-        return $container.obfuscateEmails();
-      });
-
-      it("exposes the email address", function() {
-        expect($container.find('a').text()).toBe("mail@example.com");
-      });
-
+      sharedBehaviourWhenEmailShouldBeExposed("data-email-expose='1'");
     });
 
     describe("and it is set to false", function() {
-
-      beforeEach(function (){
-        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='false'");
-        return $container.obfuscateEmails();
-      });
-
-      it("does not expose the email address", function() {
-        expect($container.find('a').text()).not.toBe("mail@example.com");
-      });
-
+      sharedBehaviourWhenEmailShouldNotBeExposed("data-email-expose='false'");
     });
 
     describe("and it is set to 0", function() {
-
-      beforeEach(function (){
-        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='0'");
-        return $container.obfuscateEmails();
-      });
-
-      it("does not expose the email address", function() {
-        expect($container.find('a').text()).not.toBe("mail@example.com");
-      });
-
+      sharedBehaviourWhenEmailShouldNotBeExposed("data-email-expose='0'");
     });
 
     describe("and it is set to 'foo'", function() {
-
-      beforeEach(function (){
-        $container = createContainer("data-email-prefix='mail' data-email-suffix='example.com' data-email-expose='foo'");
-        return $container.obfuscateEmails();
-      });
-
-      it("does not expose the email address", function() {
-        expect($container.find('a').text()).not.toBe("mail@example.com");
-      });
-
+      sharedBehaviourWhenEmailShouldNotBeExposed("data-email-expose='foo'");
     });
 
   });
