@@ -43,7 +43,10 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      all: ['Gruntfile.js', 'src/<%= meta.mainFile %>.js', 'test/**/*.js']
+      all: ['Gruntfile.js', 'src/<%= meta.mainFile %>.js', 'test/**/*.js'],
+      options: {
+        jshintrc: '.jshintrc',
+      }
     },
 
     watch: {

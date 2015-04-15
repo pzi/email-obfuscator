@@ -1,24 +1,37 @@
-# email-obfuscator [![Build Status](https://travis-ci.org/pzi/email-obfuscator.svg?branch=master)](https://travis-ci.org/pzi/email-obfuscator)
+# email-obfuscator [![Build Status](https://travis-ci.org/pzi/email-obfuscator.svg?branch=master)](https://travis-ci.org/pzi/email-obfuscator) ![dependencies](https://david-dm.org/pzi/email-obfuscator/dev-status.svg)
 
 > Protect email addresses on your website from harvesting spam bots.
 
 
 ## Install
 
+**Bower**
 ```sh
 $ bower install --save email-obfuscator
 ```
 
+**GitHub**
+```sh
+$ git clone https://github.com/pzi/email-obfuscator.git
+```
+
+or download the [latest release as a zip](https://github.com/pzi/email-obfuscator/releases).
+
+
 ## Usage
 1. Include jQuery
+    ```html
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    ```
+
 2. Include the email-obfuscator script (preferably in the footer of your website):
-    ```js
+    ```html
     <script src="dist/email_obfuscator.min.js"></script>
     ```
 
-3. Call the plugin:
+3. Call the plugin (on a container):
     ```js
-    $(document).obfuscateEmails()
+    $('body').obfuscateEmails()
     ```
 
 4. Add an e-mail address to your HTML body:
