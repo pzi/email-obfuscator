@@ -14,7 +14,11 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      dist: {
+      jquery: {
+        src: ['src/jquery.<%= meta.mainFile %>.js'],
+        dest: 'dist/jquery.<%= meta.mainFile %>.js'
+      },
+      plainjs: {
         src: ['src/<%= meta.mainFile %>.js'],
         dest: 'dist/<%= meta.mainFile %>.js'
       },
@@ -24,21 +28,33 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      my_target: {
-        src: ['dist/<%= meta.mainFile %>.js'],
-        dest: 'dist/<%= meta.mainFile %>.min.js'
-      },
-      options: {
-        banner: '<%= meta.banner %>'
+      dist: {
+        files: {
+          'dist/<%= meta.mainFile %>.min.js': 'dist/<%= meta.mainFile %>.js',
+          'dist/jquery.<%= meta.mainFile %>.min.js': 'dist/jquery.<%= meta.mainFile %>.js'
+        },
+        options: {
+          banner: '<%= meta.banner %>'
+        }
       }
     },
 
     jasmine: {
-      src: ['dist/<%= meta.mainFile %>.js'],
-      options: {
-        specs: 'test/spec/*Spec.js',
-        outfile: 'test/_SpecRunner.html',
-        vendor: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
+      jquery: {
+        src: ['dist/jquery.<%= meta.mainFile %>.js'],
+        options: {
+          specs: 'test/spec/jquery.<%= meta.mainFile %>Spec.js',
+          outfile: '_SpecRunner.html',
+          vendor: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
+        }
+      },
+      plainjs: {
+        src: ['dist/<%= meta.mainFile %>.js'],
+        options: {
+          specs: 'test/spec/<%= meta.mainFile %>Spec.js',
+          outfile: '_SpecRunner.html',
+          keepRunner: true
+        }
       }
     },
 
