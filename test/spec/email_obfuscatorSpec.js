@@ -28,7 +28,8 @@ describe("obfuscateEmails", function() {
 
     // Act
     beforeEach(function () {
-      return obfuscateEmails(container);
+      container = obfuscateEmails(container);
+      return container;
     });
 
     // Assert
@@ -48,12 +49,13 @@ describe("obfuscateEmails", function() {
 
     // Act
     beforeEach(function () {
-      return obfuscateEmails(container);
+      container = obfuscateEmails(container);
+      return container;
     });
 
     // Assert
-    xit("does not expose the email address", function() {
-      expect(container.getElementsByTagName('a').innerHTML).not.toBe("mail@example.com");
+    it("does not expose the email address", function() {
+      expect(container.getElementsByTagName('a')[0].innerHTML).not.toBe("mail@example.com");
     });
   }
 
@@ -67,20 +69,21 @@ describe("obfuscateEmails", function() {
 
     // Act
     beforeEach(function () {
-      return obfuscateEmails(container);
+      container = obfuscateEmails(container);
+      return container;
     });
 
     // Assert
-    xit("changes span to be a link", function() {
+    it("changes span to be a link", function() {
       expect(container.getElementsByTagName('a').length).toBeTruthy();
     });
 
-    xit("does not change the link text", function() {
-      expect(container.getElementsByTagName('a').innerHTML).toBe("Example email");
+    it("does not change the link text", function() {
+      expect(container.getElementsByTagName('a')[0].innerHTML).toBe("Example email");
     });
 
-    xit("sets the mailto to be the email address", function() {
-      expect(container.getElementsByTagName('a').getAttribute('href')).toBe("mailto:mail@example.com");
+    it("sets the mailto to be the email address", function() {
+      expect(container.getElementsByTagName('a')[0].getAttribute('href')).toBe("mailto:mail@example.com");
     });
 
   });
