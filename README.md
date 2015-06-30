@@ -47,7 +47,8 @@ or download the [latest release as a zip](https://github.com/pzi/email-obfuscato
 
 ## TODO
 * Add example gh-page
-* Add more tests
+* Add plain js version
+* Add more tests (jquery chainable)
 * Improve element selector
 * Include other html attributes in the conversion
 
