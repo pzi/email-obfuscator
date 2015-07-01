@@ -4,12 +4,12 @@ describe("obfuscateEmails", function() {
 
   var container;
 
-  function createContainer (data) {
+  function createContainer (dataAttributes) {
     var el = document.createElement('span');
     el.innerHTML = 'Example email';
 
-    for (var attribute in data) {
-      el.setAttribute(attribute, data[attribute]);
+    for (var attribute in dataAttributes) {
+      el.setAttribute(attribute, dataAttributes[attribute]);
     }
 
     var container = document.createElement('div');
@@ -17,12 +17,12 @@ describe("obfuscateEmails", function() {
     return container.appendChild(el);
   }
 
-  function sharedBehaviourWhenEmailShouldBeExposed (data) {
+  function sharedBehaviourWhenEmailShouldBeExposed (expose) {
     var container;
 
     // Arrange
     beforeEach(function () {
-      container = createContainer({'data-email-prefix': 'mail', 'data-email-suffix': 'example.com'}, data);
+      container = createContainer({'data-email-prefix': 'mail', 'data-email-suffix': 'example.com', 'data-expose': expose});
       return container;
     });
 
@@ -34,16 +34,16 @@ describe("obfuscateEmails", function() {
 
     // Assert
     xit("exposes the email address", function() {
-      expect(container.getElementsByTagName('a').innerHTML).toBe("mail@example.com");
+      expect(container.getElementsByTagName('a')[0].innerHTML).toBe("mail@example.com");
     });
   }
 
-  function sharedBehaviourWhenEmailShouldNotBeExposed (data) {
+  function sharedBehaviourWhenEmailShouldNotBeExposed (expose) {
     var container;
 
     // Arrange
     beforeEach(function () {
-      container = createContainer({'data-email-prefix': 'mail', 'data-email-suffix': 'example.com'}, data);
+      container = createContainer({'data-email-prefix': 'mail', 'data-email-suffix': 'example.com'}, expose);
       return container;
     });
 
@@ -90,26 +90,26 @@ describe("obfuscateEmails", function() {
 
   describe("when expose is defined", function() {
 
-    sharedBehaviourWhenEmailShouldBeExposed({'data-email-expose': ''});
+    sharedBehaviourWhenEmailShouldBeExposed('');
 
     describe("and it is set to true", function() {
-      sharedBehaviourWhenEmailShouldBeExposed({'data-email-expose': 'true'});
+      sharedBehaviourWhenEmailShouldBeExposed('true');
     });
 
     describe("and it is set to 1", function() {
-      sharedBehaviourWhenEmailShouldBeExposed({'data-email-expose': '1'});
+      sharedBehaviourWhenEmailShouldBeExposed('1');
     });
 
     describe("and it is set to false", function() {
-      sharedBehaviourWhenEmailShouldNotBeExposed({'data-email-expose': 'false'});
+      sharedBehaviourWhenEmailShouldNotBeExposed('false');
     });
 
     describe("and it is set to 0", function() {
-      sharedBehaviourWhenEmailShouldNotBeExposed({'data-email-expose': '0'});
+      sharedBehaviourWhenEmailShouldNotBeExposed('0');
     });
 
     describe("and it is set to 'foo'", function() {
-      sharedBehaviourWhenEmailShouldNotBeExposed({'data-email-expose': 'foo'});
+      sharedBehaviourWhenEmailShouldNotBeExposed('foo');
     });
 
   });

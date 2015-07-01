@@ -6,7 +6,7 @@
     var parentEl = selector.parentNode;
 
     var shouldExpose = function (expose_value) {
-      if (typeof expose_value !== "undefined" && expose_value !== null && expose_value.length < 1) {
+      if (typeof expose_value !== "undefined" && expose_value.length < 1) {
         return true;
       } else if (expose_value === true || expose_value === 1) {
         return true;
