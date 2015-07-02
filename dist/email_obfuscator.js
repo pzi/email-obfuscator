@@ -7,22 +7,24 @@
     var parentEl = selector.parentNode;
 
     var shouldExpose = function (expose_value) {
-      if (typeof expose_value !== "undefined" && expose_value !== null && expose_value.length < 1) {
+      if (expose_value === null || expose_value === undefined) {
+        return false;
+      } else if (expose_value === 'true' || expose_value === '1') {
         return true;
-      } else if (expose_value === true || expose_value === 1) {
-        return true;
+      } else {
+        return false;
       }
-      return false;
     };
 
     var linkBuilder = function (selector) {
+      var emailLink = document.createElement('a');
+
       var prefix = selector.getAttribute('data-email-prefix');
       var suffix = selector.getAttribute('data-email-suffix');
       var expose_value = selector.getAttribute('data-email-expose');
       var email = "" + prefix + "@" + suffix;
       var text = shouldExpose(expose_value) ? email : selector.innerHTML;
 
-      var emailLink = document.createElement('a');
       emailLink.setAttribute('href', 'mailto:' + email);
       emailLink.innerHTML = text;
 

@@ -22,7 +22,7 @@ describe("obfuscateEmails", function() {
 
     // Arrange
     beforeEach(function () {
-      container = createContainer({'data-email-prefix': 'mail', 'data-email-suffix': 'example.com', 'data-expose': expose});
+      container = createContainer({'data-email-prefix': 'mail', 'data-email-suffix': 'example.com', 'data-email-expose': expose});
       return container;
     });
 
@@ -33,7 +33,7 @@ describe("obfuscateEmails", function() {
     });
 
     // Assert
-    xit("exposes the email address", function() {
+    it("exposes the email address", function() {
       expect(container.getElementsByTagName('a')[0].innerHTML).toBe("mail@example.com");
     });
   }
@@ -89,8 +89,6 @@ describe("obfuscateEmails", function() {
   });
 
   describe("when expose is defined", function() {
-
-    sharedBehaviourWhenEmailShouldBeExposed('');
 
     describe("and it is set to true", function() {
       sharedBehaviourWhenEmailShouldBeExposed('true');
